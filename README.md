@@ -1,0 +1,2 @@
+# Dia_91_15junio
+ANÁLISIS DISCRIMINANTE LINEAL [Parte 3]
