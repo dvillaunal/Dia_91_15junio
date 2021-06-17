@@ -1,0 +1,66 @@
+
+	Box's M-test for Homogeneity of Covariance Matrices
+
+data:  Auto2[, 2:4]
+Chi-Sq (approx.) = 202.91, df = 6, p-value < 2.2e-16
+
+[1] "El test M de Box muestra evidencias significativas de que la matriz de covarianza no es constante para todos los grupos"
+[1] "lo que haría apropiado aplicar QDA en lugar de LDA, pero en este caso ante la falta de normalidad multivariante en los datos, el test podría haberse visto afectado por ello."
+[1] "# Comprobamos que la suma de observaciones de cada subgrupo iguala al set de datos original"
+[1] 313
+[1] 79
+[1] "nrow(Auto.train) + nrow(Auto.test) == nrow(Auto)"
+[1] "OUTPUT:"
+[1] TRUE
+[1] "# Modelo LDA con los datos de entrenamiento"
+Call:
+lda(mpg01 ~ cylinders + displacement + horsepower + weight, data = Auto.train)
+
+Prior probabilities of groups:
+        0         1 
+0.4920128 0.5079872 
+
+Group means:
+  cylinders displacement horsepower   weight
+0  6.753247     269.6558   128.0844 3598.026
+1  4.207547     117.5723    79.8239 2350.283
+
+Coefficients of linear discriminants:
+                       LD1
+cylinders    -0.3683695573
+displacement -0.0034034169
+horsepower    0.0043232816
+weight       -0.0009434883
+[1] "El modelo calcula automáticamente las probabilidades a priori"
+[1] "(PI_0 = 0,514, PI_1 = 0,485)"
+[1] " y el promedio de cada predictor dentro de cada clase, usados por el modelo como estimadores de µk."
+[1] "Los coeficientes proporcionan la combinación de los predictores"
+[1] "(- 0,4183 cylinders - 0,0017 displacement + 0,0028 – 0,0009), para generar los discriminantes lineales para cada una de las observaciones de entrenamiento."
+[1] "# Modelo QDA con los datos de entrenamiento"
+Call:
+qda(mpg01 ~ cylinders + displacement + horsepower + weight, data = Auto.train)
+
+Prior probabilities of groups:
+        0         1 
+0.4920128 0.5079872 
+
+Group means:
+  cylinders displacement horsepower   weight
+0  6.753247     269.6558   128.0844 3598.026
+1  4.207547     117.5723    79.8239 2350.283
+[1] "A diferencia del LDA, el QDA no contiene los coeficientes de los discriminantes lineales, puesto que el clasificador QDA se basa en una función cuadrática de los predictores, no lineal."
+[1] "#Se ajusta sólo el modelo LDA con este paquete:"
+Linear Discriminant Analysis 
+
+313 samples
+  4 predictor
+  2 classes: '0', '1' 
+
+No pre-processing
+Resampling: Bootstrapped (25 reps) 
+Summary of sample sizes: 313, 313, 313, 313, 313, 313, ... 
+Resampling results:
+
+  Accuracy   Kappa    
+  0.8875855  0.7747412
+
