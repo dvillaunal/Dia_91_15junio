@@ -1,3 +1,13 @@
+---
+title: "Dia_91_15junio"
+author: "Daniel Felipe Villa Rengifo"
+date: "16/6/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ```{r, eval=FALSE, include=TRUE}
 "Protocolo:
@@ -129,4 +139,13 @@ print(modelo.lda.caret)
 
 sink()
 ```
+
+```{r, eval=FALSE, include=FALSE}
+library(knitr)
+purl("Dia_91_15junio.Rmd", "main.r")
+```
+
+
+
+
 
